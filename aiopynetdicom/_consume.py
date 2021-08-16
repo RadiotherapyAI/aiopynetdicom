@@ -35,7 +35,9 @@ async def consume(ae_queue: _ae.AeQueue):
 async def _handle_association_queue(association_queue: _ae.AssociationQueue):
     dicom_store: DicomStore = list()
 
-    while True:
+    running = True
+
+    while running:
         event = await association_queue.get()
         name = event.event.name
         description = event.event.description
@@ -45,7 +47,7 @@ async def _handle_association_queue(association_queue: _ae.AssociationQueue):
             await _c_store_handler(event, dicom_store)
 
         if event.event == pynetdicom.evt.EVT_ACSE_RECV:
-            await _acse_received_handler(event, dicom_store)
+            running = await _acse_received_handler(event, dicom_store)
 
         association_queue.task_done()
 
@@ -66,4 +68,14 @@ async def _acse_received_handler(
         instance_uids = [ds.SOPInstanceUID for ds in dicom_store]
         logging.info(f"Found the following instance UIDs: {instance_uids}")
 
-    logging.info("ACSE Receiver handler complete")
+    if isinstance(
+        event.primitive,
+        (
+            pynetdicom.pdu_primitives.A_RELEASE,
+            pynetdicom.pdu_primitives.A_ABORT,
+            pynetdicom.pdu_primitives.A_P_ABORT,
+        ),
+    ):
+        return False
+
+    return True
