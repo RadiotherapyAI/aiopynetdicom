@@ -65,9 +65,7 @@ def _create_exception_and_shutdown_handler(
     executor: concurrent.futures.ThreadPoolExecutor,
 ):
     def handle_exception(loop: asyncio.AbstractEventLoop, context):
-        # context["message"] will always be there; but context["exception"] may not
         msg = context.get("exception", context["message"])
-        # TODO: Make this an error log
         logging.error(f"Caught exception: {msg}")
 
         try:

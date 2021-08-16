@@ -6,7 +6,7 @@ within `asyncio`.
 To install with pip:
 
 ```bash
-pip install .
+pip install git+https://github.com/RadiotherapyAI/aiopynetdicom
 ```
 
 To run use the installed command line interface:
@@ -14,3 +14,5 @@ To run use the installed command line interface:
 ```bash
 aiopynetdicom
 ```
+
+Then, utilise a separate pynetdicom instance to send C Store requests.
