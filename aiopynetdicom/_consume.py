@@ -63,7 +63,7 @@ async def _acse_received_handler(
     if isinstance(event.primitive, pynetdicom.pdu_primitives.A_RELEASE):
         logging.info("About to close association")
 
-        instance_uids = [ds.InstanceUID for ds in dicom_store]
+        instance_uids = [ds.SOPInstanceUID for ds in dicom_store]
         logging.info(f"Found the following instance UIDs: {instance_uids}")
 
     logging.info("ACSE Receiver handler complete")

@@ -19,6 +19,7 @@ from typing import Union
 
 import pydicom
 import pynetdicom
+import pynetdicom.ae
 import pynetdicom.association
 import pynetdicom.pdu_primitives
 
@@ -45,7 +46,7 @@ AeQueue = asyncio.Queue[AssociationQueue]
 
 
 async def start_pynetdicom_server(
-    ae: "pynetdicom.ae.ApplicationEntity",
+    ae: pynetdicom.ae.ApplicationEntity,
     port: int,
     ae_queue: AeQueue,
     executor: concurrent.futures.ThreadPoolExecutor,

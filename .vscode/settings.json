@@ -6,6 +6,7 @@
     "editor.detectIndentation": true,
     "python.sortImports.path": "isort",
     "cSpell.words": [
+        "Color",
         "Dicom",
         "SIGHUP",
         "SIGINT",
@@ -16,6 +17,9 @@
         "dimse",
         "msecs",
         "pydicom",
-        "pynetdicom"
+        "pynetdicom",
+        "tstate",
+        "typer",
+        "ultratb"
     ]
 }

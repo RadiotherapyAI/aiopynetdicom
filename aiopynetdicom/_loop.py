@@ -18,7 +18,7 @@ import logging
 import signal
 from typing import Optional
 
-import pynetdicom
+import pynetdicom.ae
 
 from . import _ae, _consume
 
@@ -61,7 +61,7 @@ def start(port: int):
 
 
 def _create_exception_and_shutdown_handler(
-    ae: "pynetdicom.ae.ApplicationEntity",
+    ae: pynetdicom.ae.ApplicationEntity,
     executor: concurrent.futures.ThreadPoolExecutor,
 ):
     def handle_exception(loop: asyncio.AbstractEventLoop, context):
@@ -88,7 +88,7 @@ def _create_exception_and_shutdown_handler(
         loop: asyncio.AbstractEventLoop,
         sig: Optional["signal.Signals"] = None,
     ):
-        """Cleanup tasks tied to the service's shutdown."""
+        """Clean up tasks tied to the service's shutdown."""
         if sig:
             logging.info(f"Received exit signal {sig.name}...")
 

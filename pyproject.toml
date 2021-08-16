@@ -5,10 +5,14 @@ description = ""
 license = "Apache-2.0"
 authors = ["SimonBiggs <simon.biggs@radiotherapy.ai>"]
 
+[tool.poetry.scripts]
+aiopynetdicom = "aiopynetdicom.__main__:app"
+
 [tool.poetry.dependencies]
 python = "^3.9"
 pynetdicom = "^1.5.7"
 ipython = "^7.26.0"
+typer = "^0.3.2"
 
 [tool.poetry.dev-dependencies]
 pylint = "^2.9.6"
