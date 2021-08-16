@@ -14,7 +14,7 @@ repos:
     hooks:
       - id: isort
         additional_dependencies: ["toml"]
-        files: ^rtai/.*\.py$
+        files: ^aiopynetdicom/.*\.py$
   - repo: https://github.com/ambv/black
     rev: 20.8b1
     hooks:
