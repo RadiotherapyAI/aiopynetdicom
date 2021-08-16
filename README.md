@@ -14,3 +14,5 @@ To run use the installed command line interface:
 ```bash
 aiopynetdicom
 ```
+
+Then, utilise a separate pynetdicom instance to send C Store requests.
