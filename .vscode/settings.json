@@ -1,0 +1,21 @@
+{
+    "python.formatting.provider": "black",
+    "python.linting.lintOnSave": true,
+    "python.linting.pylintEnabled": true,
+    "editor.formatOnSave": true,
+    "editor.detectIndentation": true,
+    "python.sortImports.path": "isort",
+    "cSpell.words": [
+        "Dicom",
+        "SIGHUP",
+        "SIGINT",
+        "acse",
+        "assoc",
+        "asyncio",
+        "datefmt",
+        "dimse",
+        "msecs",
+        "pydicom",
+        "pynetdicom"
+    ]
+}
